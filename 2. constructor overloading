@@ -1,0 +1,54 @@
+public class Employee {
+    int id;
+    String name;
+    double salary;
+     Employee(){
+        id = 0;
+        name = "NOt Assigned";
+        salary = 0.0;
+
+     }
+     Employee(String n){
+        id = 0;
+        name =n;
+        salary =0.0;
+
+     }
+     Employee(String n,double s){
+        id =0;
+        name =n;
+        salary =s;
+
+     }
+     Employee(int i,String n,double s){
+        id =i;
+        name =n;
+        salary=s;
+        
+     }
+     void display(){
+        System.out.println("ID:"+id
+            +",Name:"+name
+            +",Salary:"+salary);
+
+     }
+     public static void main(String []args){
+        Employee e1 = new Employee();
+        Employee e2 = new Employee("Amit");
+        Employee e3 = new Employee("Rahul", 50000);
+        Employee e4 = new Employee(104, "Sneha", 60000);
+         System.out.println("Employee Details:");
+        e1.display();
+        e2.display();
+        e3.display();
+        e4.display();
+
+        double totalSalary = e1.salary +e2.salary
+        +e3.salary + e4.salary;
+        double averageSalary = totalSalary / 4;
+        System.out.println("Total salary: "+ totalSalary);
+        System.out.println("Average salary: "+ averageSalary);
+
+     }
+
+}
