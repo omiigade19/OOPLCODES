@@ -1,0 +1,48 @@
+class ChatUser extends Thread {
+    private String userName;
+    private String message;
+    ChatUser(String userName, String message){
+        this . userName = userName;
+        this . message = message;
+
+    }
+    public void run(){
+        System.out.println(userName + " is sending:"+ message);
+        try{
+            Thread.sleep(500);
+            System.out.println(userName +"received a reply.");
+        }catch(InterruptedException e){
+            System.out.println(userName + "was interrupted.");
+            Thread.currentThread().interrupt();
+
+
+        }
+    }
+
+
+}
+public class Multithreaded {
+    public static void main(String []args){
+        ChatUser user1 = new ChatUser("Alice","Hello!");
+        ChatUser user2 = new ChatUser("Bob","Hi Alice!");
+        ChatUser user3 = new ChatUser("Charlie","How are you?");
+        user1.setPriority(Thread.MAX_PRIORITY);
+         user2.setPriority(Thread.NORM_PRIORITY);
+          user3.setPriority(Thread.MIN_PRIORITY);
+          
+          user1.start();
+          user2.start();
+          user3.start();
+
+          try {
+            user1.join();
+            user2.join();
+            user3.join();
+          }catch(InterruptedException e){
+            System.out.println("Main thread interrupted.");
+            Thread.currentThread().interrupt();
+
+          }
+          System.out.println("All chat thread have finished.");
+    }
+}
