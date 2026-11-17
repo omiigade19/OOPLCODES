@@ -1,0 +1,51 @@
+class Product {
+    int productId;
+    String name;
+    Product(int id, String n) {
+        productId = id;
+        name = n;
+    }
+    void displayProduct() {
+        System.out.println("Product ID: " + productId);
+        System.out.println("Product Name: " + name);
+    }
+}
+class Electronics extends Product {
+    String brand;
+    int warranty;
+    Electronics(int id, String n, String b, int w) {
+        super(id, n);
+        brand = b;
+        warranty = w;
+    }
+    void display() {
+        displayProduct();
+        System.out.println("Brand: " + brand);
+        System.out.println("Warranty: " + warranty + " years");
+    }
+}
+class Clothing extends Product {
+    String size;
+    String color;
+    Clothing(int id, String n, String s, String c) {
+        super(id, n);
+        size = s;
+        color = c;
+    }
+    void display() {
+        displayProduct();
+        System.out.println("Size: " + size);
+        System.out.println("Color: " + color);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Electronics e = new Electronics(101, "Laptop", "HP", 2);
+        Clothing c = new Clothing(102, "T-Shirt", "M", "Blue");
+
+        System.out.println("Electronics Details:");
+        e.display();
+        System.out.println("\nClothing Details:");
+        c.display();
+    }
+}
